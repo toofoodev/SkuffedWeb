@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | BBiEaL Web Port</title>
-        <style>
+    <style>
         html, body {
             background: #000;
             width: 100%;
@@ -70,7 +70,7 @@
             frameworkUrl: buildUrl + "/" + version + ".framework.js",
             codeUrl: buildUrl + "/" + version + ".wasm",
             streamingAssetsUrl: "StreamingAssets",
-            companyName: "Basically Games & WesGoof",
+            companyName: "Basically Games",
             productName: "BBiEaL Web Port",
             productVersion: version,
             showBanner: unityShowBanner,
@@ -98,13 +98,6 @@
             container.style.height = canvas.style.height = h + "px";
             container.style.top = Math.floor((window.innerHeight - h) / 2) + "px";
             container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
-        }
-
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            const meta = document.createElement('meta');
-            meta.name = 'viewport';
-            meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-            document.getElementsByTagName('head')[0].appendChild(meta);
         }
 
         const script = document.createElement("script");
