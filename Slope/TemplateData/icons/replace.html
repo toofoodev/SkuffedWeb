@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>New Tab Replace</title>
+  </head>
+
+  <body>
+    <p>This script goes into the Chrome Console.</p>
+    <p>How to:</p>
+    <p>1. Make a New Tab.</p>
+    <p>2. Hold Ctrl, then Shift, then I.</p>
+    <p>3. Click on the Console tab.</p>
+    <p>4. Paste the script and press Enter.</p>
+    <br>
+    <p>Script:</p>
+    <p>(() => {
+  const run = () => {
+    document.documentElement.textContent = '';
+    let head = document.head;
+    if (!head) {
+      head = document.createElement('head');
+      document.documentElement.appendChild(head);
+    }
+    let body = document.body;
+    if (!body) {
+      body = document.createElement('body');
+      document.documentElement.appendChild(body);
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+      html,body{margin:0;padding:0;height:100vh;width:100vw;overflow:hidden;background:#000;}
+      iframe{position:fixed;top:0;left:0;width:100%;height:100%;border:none;z-index:999999;}
+      #launchBtn{position:fixed;top:10px;right:10px;z-index:1000000;padding:10px 14px;background:#111;color:#fff;border:1px solid #333;cursor:pointer;}
+    `;
+    head.appendChild(style);
+
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://2v2.io";
+    body.appendChild(iframe);
+  };
+
+  const btn = document.createElement('button');
+  btn.id = "launchBtn";
+  btn.textContent = "Launch";
+  btn.onclick = run;
+  document.body.replaceChild(btn, document.body.children[1])
+})();</p>
+  </body>
